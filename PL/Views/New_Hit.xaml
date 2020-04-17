@@ -1,0 +1,52 @@
+﻿<Window x:Class="PL.Views.New_Hit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:toolkitt="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        xmlns:local1="clr-namespace:PL.Converters"
+        mc:Ignorable="d"
+        Background="RoyalBlue"
+        Title="New_Hit" Height="600" Width="450" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <local1:HitConverter x:Key="hitConverter"></local1:HitConverter>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+        <Label Foreground="Orange" FontSize="27" Content="Enter real conformed hit" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <Label Foreground="Orange" FontSize="17" Content="Location:" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <toolkit:AutoCompleteBox x:Name="location" TextChanged="HitLocation_TextChanged" SelectedItem="{Binding SelectedLocation, Mode=TwoWay}" ItemsSource="{Binding locations}" Margin="10,4" Grid.Row="2" Grid.Column="1"/>
+        <Label Foreground="Orange" Content="Time:" HorizontalAlignment="Center" FontSize="17" Grid.Row="1" VerticalAlignment="Center"/>
+        <GroupBox Background="White" Header="Preview" Margin="100,4" Grid.Row="4" Grid.ColumnSpan="2">
+            <Image x:Name="imgShow" Margin="0" RenderTransformOrigin="0.766,0.482"/>
+        </GroupBox>
+        <!--<GroupBox Header="Drop photo here" Margin="10,4"  Grid.Row="3" Grid.ColumnSpan="2">-->
+        <Label Foreground="Orange" Content="Drop photo here:" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17"/>
+        <ListBox x:Name="lstImage" Style="{DynamicResource dropListBox}" SelectionMode="Single" AllowDrop="True" Margin="10,4"  Grid.Row="3" Grid.Column="1" Drop="lstImage_Drop" SelectionChanged="lstImage_SelectionChanged"  />
+        <!--</GroupBox>-->
+        <!--<Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="10,8,0,0" VerticalAlignment="Top" Width="100" Grid.Row="3"/>-->
+        <toolkitt:DateTimePicker x:Name="dateAndTime" Value="{Binding Source={x:Static sys:DateTime.Now},Mode=OneWay}" Format="Custom" FormatString="dd-MM-yyyy hh:mm tt" TimeFormat="Custom" TimeFormatString="hh:mm tt" Background="AliceBlue" FontSize="17" Margin="10,4" Grid.Column="1" Grid.Row="1"/>
+        <Button Background="Orange" Foreground="RoyalBlue" FontWeight="Black" x:Name="submit_button" Command="{Binding addHitCommand}" Grid.Row="5" FontSize="18" Height="auto" Content="SUBMIT" Click="Submit_Click" Margin="18" Grid.ColumnSpan="2">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource hitConverter}">
+                    <Binding Path="SelectedItem" ElementName="lstImage"/>
+                    <Binding Path="Value" ElementName="dateAndTime"/>
+                    <Binding Path="SelectedItem" ElementName="location"/>
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
+    </Grid>
+</Window>

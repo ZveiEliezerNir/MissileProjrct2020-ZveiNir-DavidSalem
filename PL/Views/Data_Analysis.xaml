@@ -1,0 +1,72 @@
+﻿<Window x:Class="PL.Views.Data_Analysis"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:toolkitt="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+        xmlns:local="clr-namespace:PL.Views"
+        mc:Ignorable="d"
+        Background="RoyalBlue"
+        Title="Data_Analysis" Height="600" Width="1440" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="1100"/>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Right" Width="1100" Grid.Column="2" Grid.RowSpan="10" Margin="0,0,0,-0.405" >
+            <m:Map x:Name="myMap" Grid.Column="1" Grid.ColumnSpan="3" CredentialsProvider="g6V40OMcf2NNJe07qiWD~NhB3DL-oqtYSkUHB5kellQ~Avi_2hYLQtKCC8iFOuBjMx1EQfprwDIzkz782VgpYms7401vYZDrNepSNkxyW_nJ " 
+               Mode="road" Center="{Binding CenterLocation, Mode=TwoWay}" ZoomLevel="{Binding ZoomLevel, Mode=TwoWay}" Grid.RowSpan="2">
+                <m:MapItemsControl x:Name="MapItems" ItemsSource="{Binding pushpins}">
+                    <m:MapItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <m:Pushpin x:Name="Pushpin" Location="{Binding Location}" Background="{Binding Background}"               />
+                        </DataTemplate>
+                    </m:MapItemsControl.ItemTemplate>
+                </m:MapItemsControl>
+            </m:Map>
+        </Grid>
+        <Label Foreground="Orange" FontWeight="Black" Content="Insert the date range for analysis" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Grid.ColumnSpan="2" />
+        <Label Foreground="Orange" FontWeight="Black" Content="Start time:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+        <toolkitt:DateTimePicker x:Name="startTime" Value="{Binding start}" Format="Custom" FormatString="dd-MM-yyyy hh:mm tt" TimeFormat="Custom" TimeFormatString="hh:mm tt" Background="AliceBlue" FontSize="17" Margin="0,4,5,4" Grid.Column="1" Grid.Row="1"/>
+        <Label Foreground="Orange" FontWeight="Black" Content="End time:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"/>
+        <toolkitt:DateTimePicker x:Name="endTime" Value="{Binding end}" Format="Custom" FormatString="dd-MM-yyyy hh:mm tt" TimeFormat="Custom" TimeFormatString="hh:mm tt" Background="AliceBlue" FontSize="17" Margin="0,4,5,4" Grid.Column="1" Grid.Row="2"/>
+        <CheckBox x:Name="displayByEvents" Content="View event reports (each event is 10 minutes)" Unchecked="DisplayByEvents_Unchecked" Checked="DisplayByEvents_Checked" Grid.Row="3" Margin="5" Grid.ColumnSpan="2"/>
+        <Label Foreground="Orange" FontWeight="Black" Content="Start time:" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <toolkitt:DateTimePicker x:Name="eventStartTime" Value="{Binding start}" Format="Custom" FormatString="dd-MM-yyyy hh:mm tt" TimeFormat="Custom" TimeFormatString="hh:mm tt" Background="AliceBlue" FontSize="17" Margin="0,4,5,4" Grid.Column="1" Grid.Row="4"/>
+        <Label Foreground="Orange" FontWeight="Black" Content="Number of&#10;   events:" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <StackPanel Grid.Column="1" Grid.Row="5" Margin="10,3,50,3">
+            <ComboBox x:Name="eventNum" SelectedItem="{Binding eventNum}"/>
+        </StackPanel>
+        <Button Background="Orange" Foreground="RoyalBlue" FontWeight="Black" Content="Display" Click="DisplayButton_Click" Grid.Row="6" Margin="5" Grid.ColumnSpan="2"/>
+        <Label Foreground="Orange" FontWeight="Black" Content="for using at K-Means algorithm insert the k number:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Grid.Row="7" Grid.ColumnSpan="2" />
+        <StackPanel Grid.Row="8" Margin="5,5,150,5" Grid.ColumnSpan="2">
+            <ComboBox x:Name="KmeansNum" SelectedItem="{Binding newItem}"/>
+        </StackPanel>
+        <CheckBox Content="Aerial photography" Unchecked="MapCheckBox_Unchecked" Checked="MapCheckBox_Checked" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" />
+        <Button Content="K-Means" Click="K_Means_Click" Grid.Column="1" HorizontalAlignment="Right" Margin="5" Grid.Row="8" Width="130" Background="Green"/>
+        <Button Content="Add Hits" Click="AddHits_Click" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="9" Width="100" Background="Red"/>
+        <Label Foreground="Orange" FontWeight="Light" Content="Add current hits:" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="9" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
