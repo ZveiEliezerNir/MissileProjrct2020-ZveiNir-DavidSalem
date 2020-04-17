@@ -6,7 +6,9 @@ See live demonstration here: https://www.youtube.com/watch?v=g-1L2qAYDWo&pbjrelo
 
 Institute: Lev Academic Center, **Lev Campus**.
 
-Authors:  Zvei Eliezer Nir   ID: *316525344*
+Authors:  
 
-          David Salem        ID: *509610520*
+Zvei Eliezer Nir   ID: *316525344*
+
+David Salem        ID: *509610520*
           
