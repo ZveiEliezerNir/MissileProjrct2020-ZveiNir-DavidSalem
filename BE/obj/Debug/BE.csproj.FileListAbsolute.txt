@@ -1,0 +1,13 @@
+C:\Users\קינג חגי\Source\Repos\WPFMissleProject_5356_57804\PL\BE\bin\Debug\BE.dll.config
+C:\Users\קינג חגי\Source\Repos\WPFMissleProject_5356_57804\PL\BE\bin\Debug\BE.dll
+C:\Users\קינג חגי\Source\Repos\WPFMissleProject_5356_57804\PL\BE\bin\Debug\BE.pdb
+C:\Users\קינג חגי\Source\Repos\WPFMissleProject_5356_57804\PL\BE\obj\Debug\BE.csproj.CoreCompileInputs.cache
+C:\Users\קינג חגי\Source\Repos\WPFMissleProject_5356_57804\PL\BE\obj\Debug\BE.dll
+C:\Users\קינג חגי\Source\Repos\WPFMissleProject_5356_57804\PL\BE\obj\Debug\BE.pdb
+C:\Users\קינג חגי\Source\Repos\WPFMissleProject_5356_57804\PL\BE\obj\Debug\BE.csprojAssemblyReference.cache
+D:\forth year winter\dotNET\WPFMissleProject_5356_57804\PL\BE\bin\Debug\BE.dll.config
+D:\forth year winter\dotNET\WPFMissleProject_5356_57804\PL\BE\bin\Debug\BE.dll
+D:\forth year winter\dotNET\WPFMissleProject_5356_57804\PL\BE\bin\Debug\BE.pdb
+D:\forth year winter\dotNET\WPFMissleProject_5356_57804\PL\BE\obj\Debug\BE.csprojResolveAssemblyReference.cache
+D:\forth year winter\dotNET\WPFMissleProject_5356_57804\PL\BE\obj\Debug\BE.dll
+D:\forth year winter\dotNET\WPFMissleProject_5356_57804\PL\BE\obj\Debug\BE.pdb
